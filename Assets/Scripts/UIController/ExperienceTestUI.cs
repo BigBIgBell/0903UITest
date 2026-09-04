@@ -19,7 +19,7 @@ public class ExperienceTestUI : MonoBehaviour
     private Button changeButton;
 
     [Header("快捷键")]
-    [Tooltip("按 ~ 时显示/隐藏的面板；留空则隐藏挂有本脚本的物体")]
+    [Tooltip("按 ~ 时显示/隐藏的面板")]
     [SerializeField]
     private GameObject panelRoot;
 
@@ -61,9 +61,9 @@ public class ExperienceTestUI : MonoBehaviour
 
         if (panelRoot.activeSelf)
         {
-            // 隐藏面板；同时挂一个独立监听器，保证面板自身失活后还能按 ~ 唤回
+            // 隐藏面板
             panelRoot.SetActive(false);
-            ShowListener.EnsureAwake(panelRoot);
+           
         }
         else
         {
@@ -71,7 +71,7 @@ public class ExperienceTestUI : MonoBehaviour
         }
     }
 
-    /// <summary>读取下拉框和输入框并更新对应经验文本（供“更改”按钮点击时调用）</summary>
+    /// <summary>更新经验文本</summary>
     public void ApplyChange()
     {
         if (UIController.Instance == null)
@@ -99,49 +99,6 @@ public class ExperienceTestUI : MonoBehaviour
         {
             UIController.Instance.SetFootballManagerExp(value);
             Debug.Log($"[经验测试] 足球经理经验已设为 {value}");
-        }
-    }
-
-    /// <summary>
-    /// 临时按键监听器：挂在独立物体上，面板隐藏后仍然监听 ~，
-    /// 收到按键就重新显示面板并自动销毁自己。
-    /// </summary>
-    private class ShowListener : MonoBehaviour
-    {
-        private static ShowListener instance;
-        private GameObject target;
-
-        public static void EnsureAwake(GameObject panel)
-        {
-            if (instance != null)
-            {
-                instance.target = panel;
-                return;
-            }
-
-            GameObject go = new GameObject("ExperienceTestShowListener");
-            go.hideFlags = HideFlags.HideAndDontSave;
-            DontDestroyOnLoad(go);
-            instance = go.AddComponent<ShowListener>();
-            instance.target = panel;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.BackQuote))
-            {
-                if (target != null)
-                    target.SetActive(true);
-
-                Destroy(gameObject);
-                instance = null;
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (instance == this)
-                instance = null;
         }
     }
 }
