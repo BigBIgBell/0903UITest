@@ -18,15 +18,18 @@ public class UIController : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-                Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
+
     private void Start()
     {
         if (footballManagerExpText == null)
             Debug.LogWarning("UIController：足球经理经验文本未赋值", this);
+
         if (headCoachExpText == null)
             Debug.LogWarning("UIController：主教练经验文本未赋值", this);
     }
