@@ -1,0 +1,42 @@
+# Unity 官方推荐的文本序列化设置：统一换行并保留可读的 YAML 合并
+*.mat merge=unityyamlmerge eol=lf
+*.anim merge=unityyamlmerge eol=lf
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
+*.physicsMaterial2D merge=unityyamlmerge eol=lf
+*.physicsMaterial merge=unityyamlmerge eol=lf
+*.asset merge=unityyamlmerge eol=lf
+*.controller merge=unityyamlmerge eol=lf
+*.overrideController merge=unityyamlmerge eol=lf
+*.meta merge=unityyamlmerge eol=lf
+*.mixer merge=unityyamlmerge eol=lf
+*.flare merge=unityyamlmerge eol=lf
+*.cubemap merge=unityyamlmerge eol=lf
+*.lighting merge=unityyamlmerge eol=lf
+*.playable merge=unityyamlmerge eol=lf
+*.mask merge=unityyamlmerge eol=lf
+*.renderTexture merge=unityyamlmerge eol=lf
+*.spriteatlas merge=unityyamlmerge eol=lf
+
+# Unity 常用二进制资源
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.tga binary
+*.tif binary
+*.tiff binary
+*.psd binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.aif binary
+*.flac binary
+*.mov binary
+*.mp4 binary
+*.avi binary
+*.fbx binary
+*.dll binary
+*.exr binary
+*.hdr binary
